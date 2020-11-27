@@ -12,9 +12,7 @@
 function get_darkmode_state {
 state=$(osascript <<EOD
 tell application "System Events" to tell appearance preferences
-	get properties
-	set currentValue to dark mode
-		return currentValue
+    return dark mode
 end tell
 EOD
 )
@@ -44,7 +42,7 @@ echo "| templateImage=iVBORw0KGgoAAAANSUhEUgAAAGwAAABsCAYAAACPZlfNAAAACXBIWXMAAE
 echo "---"
 
 get_darkmode_state;
-if "$state" is true; then
+if "$state" incl::is true; then
 	echo "Deactivate Dark Mode| bash='$0' param1=desactivate terminal=false refresh=true";
 	exit
 else
